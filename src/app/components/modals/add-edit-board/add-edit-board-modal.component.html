@@ -1,0 +1,55 @@
+<div class="modal-overlay">
+  <div class="modal-box">
+    <h2 class="modal-title">{{ mode === 'add' ? 'Add New Board' : 'Edit Board' }}</h2>
+
+    <!-- Name -->
+    <div class="form-group mb-24">
+      <label for="board-name">Board Name</label>
+      <div class="input-wrapper">
+        <input
+          id="board-name"
+          class="form-control"
+          [class.is-invalid]="!!nameError"
+          [(ngModel)]="name"
+          (blur)="nameTouched = true"
+          placeholder="e.g. Web Design">
+        @if (nameError) {
+          <span class="error-text">{{ nameError }}</span>
+        }
+      </div>
+    </div>
+
+    <!-- Columns -->
+    <div class="form-group mb-24">
+      <label>Board Columns</label>
+      <div class="cols-list">
+        @for (col of columns; track i; let i = $index) {
+          <div class="input-row">
+            <div class="input-wrapper">
+              <input
+                class="form-control"
+                [class.is-invalid]="!!colError(i)"
+                [(ngModel)]="col.name"
+                (blur)="col.touched = true"
+                placeholder="e.g. Todo">
+              @if (colError(i)) {
+                <span class="error-text">{{ colError(i) }}</span>
+              }
+            </div>
+            <button type="button" class="remove-btn" (click)="removeColumn(i)">
+              <img src="assets/icon-cross.svg" alt="Remove">
+            </button>
+          </div>
+        }
+      </div>
+      <button type="button" class="btn btn-secondary btn-sm add-col-btn" (click)="addColumn()">
+        + Add New Column
+      </button>
+    </div>
+
+    <!-- Save -->
+    <button type="button" class="btn btn-primary btn-lg" (click)="save()">
+      {{ mode === 'add' ? 'Create New Board' : 'Save Changes' }}
+    </button>
+  </div>
+</div>

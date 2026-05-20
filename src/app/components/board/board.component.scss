@@ -1,0 +1,117 @@
+$medium-grey: #828FA3;
+$purple:      #635FC7;
+
+:host {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+}
+
+.board-scroll {
+  display: flex;
+  gap: 24px;
+  padding: 24px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  flex: 1;
+  align-items: flex-start;
+  height: 100%;
+}
+
+// ── Column ──
+.column {
+  width: 280px;
+  min-width: 280px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-height: calc(100vh - 160px);
+}
+
+.col-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  flex-shrink: 0;
+}
+
+.col-dot {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+h4 {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2.4px;
+  text-transform: uppercase;
+  color: $medium-grey;
+}
+
+// ── Task list ──
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex: 1;
+  padding-bottom: 8px;
+
+  // Needed for CDK DragDrop to work even when empty
+  min-height: 4px;
+}
+
+.empty-col-placeholder {
+  height: 100px;
+  border: 2px dashed var(--color-lines);
+  border-radius: 8px;
+}
+
+// ── Add column button ──
+.add-column {
+  width: 280px;
+  min-width: 280px;
+  margin-top: 38px; // align with tasks (below heading height)
+  background: var(--color-add-col-bg);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 24px;
+  font-weight: 700;
+  color: $medium-grey;
+  min-height: 824px;
+  transition: color 0.15s;
+  flex-shrink: 0;
+
+  &:hover { color: $purple; }
+
+  :root.light & {
+    background: linear-gradient(180deg, #E9EFFA 0%, rgba(233,239,250,0.5) 100%);
+  }
+}
+
+// ── Empty board ──
+.empty-board {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  padding: 32px;
+  text-align: center;
+
+  p {
+    font-size: 18px;
+    font-weight: 700;
+    color: $medium-grey;
+    max-width: 320px;
+    line-height: 1.5;
+  }
+}

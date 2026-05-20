@@ -1,0 +1,56 @@
+@if (activeBoard$ | async; as board) {
+  @if (board.columns.length === 0) {
+    <!-- Empty board state -->
+    <div class="empty-board">
+      <p>This board is empty. Create a new column to get started.</p>
+      <button class="btn btn-primary btn-lg" style="width:auto; padding: 15px 32px;" (click)="openAddColumn()">
+        + Add New Column
+      </button>
+    </div>
+  } @else {
+    <!-- Scrollable column area -->
+    <div class="board-scroll">
+      @for (col of board.columns; track col.id) {
+        <div class="column">
+          <!-- Column header -->
+          <div class="col-header">
+            <span class="col-dot" [style.background]="col.color"></span>
+            <h4>{{ col.name }} ({{ col.tasks.length }})</h4>
+          </div>
+
+          <!-- Tasks drop list -->
+          <div
+            class="task-list"
+            cdkDropList
+            [id]="'col-' + col.id"
+            [cdkDropListData]="col.tasks"
+            [cdkDropListConnectedTo]="connectedListIds"
+            (cdkDropListDropped)="onTaskDrop($event, col, board.id)">
+
+            @for (task of col.tasks; track task.id) {
+              <app-task-card
+                [task]="task"
+                cdkDrag
+                [cdkDragData]="task"
+                (click)="openTask(task.id, col.id)">
+              </app-task-card>
+            }
+
+            @if (col.tasks.length === 0) {
+              <div class="empty-col-placeholder"></div>
+            }
+          </div>
+        </div>
+      }
+
+      <!-- Add new column button -->
+      <div class="add-column" (click)="openAddColumn()">
+        <span>+ New Column</span>
+      </div>
+    </div>
+  }
+} @else {
+  <div class="empty-board">
+    <p>No boards yet. Create your first board to get started!</p>
+  </div>
+}

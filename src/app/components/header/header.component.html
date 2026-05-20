@@ -1,0 +1,44 @@
+<header class="app-header">
+  <!-- Mobile logo -->
+  <div class="mobile-logo" (click)="toggleSidebar.emit()">
+    <img src="assets/logo-mobile.svg" alt="Kanban">
+    @if (activeBoard$ | async; as board) {
+      <h2 class="board-name-mobile">{{ board.name }}</h2>
+      <img src="assets/icon-chevron-down.svg" alt="" class="chevron" [class.up]="sidebarVisible">
+    }
+  </div>
+
+  <!-- Desktop board name -->
+  @if (activeBoard$ | async; as board) {
+    <h1 class="board-name-desktop">{{ board.name }}</h1>
+  }
+
+  <!-- Actions -->
+  <div class="header-actions">
+    @if (activeBoard$ | async; as board) {
+      <!-- Add Task -->
+      <button
+        class="btn btn-primary btn-lg add-task-btn"
+        (click)="addTask()"
+        [disabled]="!hasColumns">
+        <img src="assets/icon-add-task-mobile.svg" alt="" class="add-icon-mobile">
+        <span class="add-label">+ Add New Task</span>
+      </button>
+
+      <!-- Board menu -->
+      <div class="menu-wrap">
+        <button class="menu-trigger" (click)="toggleMenu()" title="Board options">
+          <img src="assets/icon-vertical-ellipsis.svg" alt="Options">
+        </button>
+
+        @if (menuOpen) {
+          <div class="dropdown-overlay" (click)="closeMenu()"></div>
+          <div class="dropdown-menu header-dropdown">
+            <button (click)="editBoard()">Edit Board</button>
+            <button class="danger" (click)="deleteBoard()">Delete Board</button>
+          </div>
+        }
+      </div>
+    }
+  </div>
+</header>

@@ -1,0 +1,53 @@
+<div class="app-shell">
+  <!-- Sidebar -->
+  <app-sidebar
+    [visible]="sidebarVisible"
+    (toggleSidebar)="toggleSidebar()">
+  </app-sidebar>
+
+  <!-- Main content -->
+  <div class="main-content" [class.sidebar-hidden]="!sidebarVisible">
+    <!-- Header -->
+    <app-header
+      [sidebarVisible]="sidebarVisible"
+      (toggleSidebar)="toggleSidebar()">
+    </app-header>
+
+    <!-- Board -->
+    <app-board></app-board>
+
+    <!-- Show sidebar button (when hidden) -->
+    @if (!sidebarVisible) {
+      <button class="show-sidebar-btn" (click)="toggleSidebar()" title="Show Sidebar">
+        <img src="assets/icon-show-sidebar.svg" alt="Show Sidebar">
+      </button>
+    }
+  </div>
+</div>
+
+<!-- Modals -->
+@if (modal$ | async; as modal) {
+  @switch (modal.type) {
+    @case ('view-task') {
+      <app-task-detail-modal [taskId]="modal.taskId!" [columnId]="modal.columnId!"></app-task-detail-modal>
+    }
+    @case ('add-task') {
+      <app-add-edit-task-modal [mode]="'add'"></app-add-edit-task-modal>
+    }
+    @case ('edit-task') {
+      <app-add-edit-task-modal [mode]="'edit'" [taskId]="modal.taskId!"></app-add-edit-task-modal>
+    }
+    @case ('add-board') {
+      <app-add-edit-board-modal [mode]="'add'"></app-add-edit-board-modal>
+    }
+    @case ('edit-board') {
+      <app-add-edit-board-modal [mode]="'edit'"></app-add-edit-board-modal>
+    }
+    @case ('delete-board') {
+      <app-delete-confirm-modal [type]="'board'"></app-delete-confirm-modal>
+    }
+    @case ('delete-task') {
+      <app-delete-confirm-modal [type]="'task'" [taskId]="modal.taskId!"></app-delete-confirm-modal>
+    }
+  }
+}

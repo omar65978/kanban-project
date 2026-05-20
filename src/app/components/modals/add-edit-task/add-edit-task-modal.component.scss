@@ -1,0 +1,14 @@
+.mb-24 { margin-bottom: 24px; }
+
+.subtasks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.add-sub-btn {
+  width: 100%;
+  border-radius: 20px;
+  margin-top: 4px;
+}

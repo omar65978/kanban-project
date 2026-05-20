@@ -1,0 +1,79 @@
+<div class="modal-overlay">
+  <div class="modal-box">
+    <h2 class="modal-title">{{ mode === 'add' ? 'Add New Task' : 'Edit Task' }}</h2>
+
+    <!-- Title -->
+    <div class="form-group mb-24">
+      <label for="task-title">Title</label>
+      <div class="input-wrapper">
+        <input
+          id="task-title"
+          class="form-control"
+          [class.is-invalid]="!!titleError"
+          [(ngModel)]="title"
+          (blur)="titleTouched = true"
+          placeholder="e.g. Take coffee break">
+        @if (titleError) {
+          <span class="error-text">{{ titleError }}</span>
+        }
+      </div>
+    </div>
+
+    <!-- Description -->
+    <div class="form-group mb-24">
+      <label for="task-desc">Description</label>
+      <textarea
+        id="task-desc"
+        class="form-control"
+        [(ngModel)]="description"
+        placeholder="e.g. It's always good to take a break. This 15 minute break will recharge the batteries a little.">
+      </textarea>
+    </div>
+
+    <!-- Subtasks -->
+    <div class="form-group mb-24">
+      <label>Subtasks</label>
+      <div class="subtasks-list">
+        @for (sub of subtasks; track i; let i = $index) {
+          <div class="input-row">
+            <div class="input-wrapper">
+              <input
+                class="form-control"
+                [class.is-invalid]="!!subtaskError(i)"
+                [(ngModel)]="sub.title"
+                (blur)="sub.touched = true"
+                placeholder="e.g. Make coffee">
+              @if (subtaskError(i)) {
+                <span class="error-text">{{ subtaskError(i) }}</span>
+              }
+            </div>
+            <button type="button" class="remove-btn" (click)="removeSubtask(i)">
+              <img src="assets/icon-cross.svg" alt="Remove">
+            </button>
+          </div>
+        }
+      </div>
+      <button type="button" class="btn btn-secondary btn-sm add-sub-btn" (click)="addSubtask()">
+        + Add New Subtask
+      </button>
+    </div>
+
+    <!-- Status -->
+    <div class="form-group mb-24">
+      <label>Status</label>
+      <div class="custom-select">
+        <select [(ngModel)]="status">
+          @for (col of columnNames; track col) {
+            <option [value]="col">{{ col }}</option>
+          }
+        </select>
+        <img src="assets/icon-chevron-down.svg" alt="" class="chevron">
+      </div>
+    </div>
+
+    <!-- Save -->
+    <button type="button" class="btn btn-primary btn-lg" (click)="save()">
+      {{ mode === 'add' ? 'Create Task' : 'Save Changes' }}
+    </button>
+  </div>
+</div>

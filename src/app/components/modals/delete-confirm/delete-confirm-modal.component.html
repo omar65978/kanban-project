@@ -1,0 +1,10 @@
+<div class="modal-overlay">
+  <div class="modal-box">
+    <h2 class="modal-title destructive">{{ title }}</h2>
+    <p class="confirm-body">{{ message }}</p>
+    <div class="btn-row">
+      <button class="btn btn-destructive btn-lg" (click)="confirm()">Delete</button>
+      <button class="btn btn-secondary  btn-lg" (click)="close()">Cancel</button>
+    </div>
+  </div>
+</div>

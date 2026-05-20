@@ -1,0 +1,13 @@
+.mb-24 { margin-bottom: 24px; }
+
+.cols-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.add-col-btn {
+  width: 100%;
+  border-radius: 20px;
+}

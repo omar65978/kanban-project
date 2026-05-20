@@ -1,0 +1,62 @@
+<div class="modal-overlay">
+  @if (task) {
+    <div class="modal-box">
+      <!-- Title + menu -->
+      <div class="task-header">
+        <h2>{{ task.title }}</h2>
+        <div class="menu-wrap">
+          <button class="menu-trigger" (click)="menuOpen = !menuOpen">
+            <img src="assets/icon-vertical-ellipsis.svg" alt="Options">
+          </button>
+          @if (menuOpen) {
+            <div class="dropdown-overlay" (click)="menuOpen = false"></div>
+            <div class="dropdown-menu task-dropdown">
+              <button (click)="editTask()">Edit Task</button>
+              <button class="danger" (click)="deleteTask()">Delete Task</button>
+            </div>
+          }
+        </div>
+      </div>
+
+      <!-- Description -->
+      @if (task.description) {
+        <p class="task-description">{{ task.description }}</p>
+      }
+
+      <!-- Subtasks -->
+      @if (task.subtasks.length > 0) {
+        <div class="subtasks-section">
+          <h4>Subtasks ({{ completedCount }} of {{ task.subtasks.length }})</h4>
+          <div class="subtasks-list">
+            @for (sub of task.subtasks; track $index) {
+              <label class="subtask-item" [class.checked]="sub.isCompleted">
+                <input type="checkbox" [checked]="sub.isCompleted" (change)="toggleSubtask($index)">
+                <span class="checkbox">
+                  @if (sub.isCompleted) {
+                    <img src="assets/icon-check.svg" alt="">
+                  }
+                </span>
+                <span class="subtask-title">{{ sub.title }}</span>
+              </label>
+            }
+          </div>
+        </div>
+      }
+
+      <!-- Status -->
+      <div class="status-section">
+        <div class="form-group">
+          <label>Current Status</label>
+          <div class="custom-select">
+            <select [(ngModel)]="selectedStatus" (ngModelChange)="onStatusChange()">
+              @for (col of columnNames; track col) {
+                <option [value]="col">{{ col }}</option>
+              }
+            </select>
+            <img src="assets/icon-chevron-down.svg" alt="" class="chevron">
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+</div>
