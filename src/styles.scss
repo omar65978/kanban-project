@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&display=swap');
 
-// ── Dark theme (default) ──
 :root {
   --color-bg:         #20212C;
   --color-surface:    #2B2C37;
@@ -25,7 +24,6 @@
   --scrollbar-thumb:  #D8D9E0;
 }
 
-// ── Shared colors ──
 $purple:       #635FC7;
 $purple-hover: #A8A4FF;
 $red:          #EA5555;
@@ -34,7 +32,7 @@ $white:        #FFFFFF;
 $black:        #000112;
 $medium-grey:  #828FA3;
 
-// ── Column dot colors ──
+
 $col-colors: #49C4E5, #8471F2, #67E2AE, #EA5555, #F0C100, #E99138, #49E5C4, #F26C6C;
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -47,7 +45,6 @@ html, body {
   overflow: hidden;
 }
 
-// ── Scrollbar ──
 ::-webkit-scrollbar { width: 8px; height: 8px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb {
@@ -56,7 +53,6 @@ html, body {
 }
 ::-webkit-scrollbar-thumb:hover { background: $medium-grey; }
 
-// ── Typography ──
 h1 { font-size: 24px; font-weight: 700; line-height: 30px; }
 h2 { font-size: 18px; font-weight: 700; line-height: 23px; }
 h3 { font-size: 15px; font-weight: 700; line-height: 19px; }
@@ -71,7 +67,6 @@ h4 {
 p, .body-l { font-size: 13px; font-weight: 500; line-height: 23px; }
 .body-m     { font-size: 12px; font-weight: 700; line-height: 15px; }
 
-// ── Buttons ──
 .btn {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 700;
@@ -129,7 +124,6 @@ p, .body-l { font-size: 13px; font-weight: 500; line-height: 23px; }
   &:hover { color: var(--color-text-1); }
 }
 
-// ── Form controls ──
 .form-group {
   display: flex;
   flex-direction: column;
@@ -167,7 +161,6 @@ textarea.form-control {
   min-height: 112px;
 }
 
-// ── Modal overlay ──
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -207,7 +200,6 @@ textarea.form-control {
   color: $red;
 }
 
-// ── Dropdown ──
 .dropdown-overlay {
   position: fixed;
   inset: 0;
@@ -244,7 +236,6 @@ textarea.form-control {
   }
 }
 
-// ── Subtask checkbox ──
 .subtask-item {
   display: flex;
   align-items: center;
@@ -290,7 +281,6 @@ textarea.form-control {
   }
 }
 
-// ── Select dropdown ──
 .custom-select {
   position: relative;
 
@@ -322,7 +312,6 @@ textarea.form-control {
   }
 }
 
-// ── Removable input row ──
 .input-row {
   display: flex;
   align-items: center;
@@ -345,7 +334,6 @@ textarea.form-control {
   }
 }
 
-// ── Error text ──
 .error-text {
   position: absolute;
   right: 16px;
@@ -362,7 +350,6 @@ textarea.form-control {
   flex: 1;
 }
 
-// ── CDK Drag & Drop ──
 .cdk-drag-preview {
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(54, 78, 126, 0.3);

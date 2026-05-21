@@ -1,7 +1,6 @@
 <aside class="sidebar" [class.hidden]="!visible">
   <div class="sidebar-inner">
 
-    <!-- Logo -->
     <div class="logo">
       @if (isDark$ | async) {
         <img src="assets/logo-light.svg" alt="Kanban" class="logo-full">
@@ -11,7 +10,6 @@
       <img src="assets/logo-mobile.svg" alt="Kanban" class="logo-mobile">
     </div>
 
-    <!-- Board list -->
     <nav class="boards-nav">
       <h4 class="nav-heading">
         All Boards ({{ (boards$ | async)?.length ?? 0 }})
@@ -39,9 +37,7 @@
       </ul>
     </nav>
 
-    <!-- Footer -->
     <div class="sidebar-footer">
-      <!-- Theme toggle -->
       <div class="theme-toggle">
         <img src="assets/icon-light-theme.svg" alt="Light">
         <button
@@ -54,7 +50,6 @@
         <img src="assets/icon-dark-theme.svg" alt="Dark">
       </div>
 
-      <!-- Hide sidebar -->
       <button class="hide-sidebar-btn" (click)="hideSidebar()">
         <img src="assets/icon-hide-sidebar.svg" alt="">
         <span>Hide Sidebar</span>

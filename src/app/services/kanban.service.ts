@@ -15,7 +15,6 @@ export class KanbanService {
   private _state$ = new BehaviorSubject<KanbanState>(this.loadState());
   private _modal$ = new BehaviorSubject<ModalState>({ type: null });
 
-  // ── Public observables ──
   readonly state$    = this._state$.asObservable();
   readonly modal$    = this._modal$.asObservable();
   readonly boards$   = this.state$.pipe(map(s => s.boards));
@@ -23,7 +22,6 @@ export class KanbanService {
     map(s => s.boards.find(b => b.id === s.activeBoardId) ?? s.boards[0] ?? null)
   );
 
-  // ── Private helpers ──
   private get state(): KanbanState { return this._state$.value; }
 
   private setState(state: KanbanState): void {
@@ -53,7 +51,6 @@ export class KanbanService {
     return COLORS[Math.floor(Math.random() * COLORS.length)];
   }
 
-  // ── Board operations ──
   setActiveBoard(id: string): void {
     this.setState({ ...this.state, activeBoardId: id });
   }
@@ -98,7 +95,6 @@ export class KanbanService {
     this.setState({ boards, activeBoardId });
   }
 
-  // ── Task operations ──
   addTask(boardId: string, task: { title: string; description: string; status: string; subtasks: { title: string }[] }): void {
     const boards = this.state.boards.map(b => {
       if (b.id !== boardId) return b;
@@ -202,7 +198,6 @@ export class KanbanService {
     this.updateBoards(boards);
   }
 
-  // ── Drag & drop reorder ──
   reorderTask(boardId: string, fromColId: string, toColId: string, fromIdx: number, toIdx: number): void {
     const boards = this.state.boards.map(b => {
       if (b.id !== boardId) return b;
@@ -219,7 +214,6 @@ export class KanbanService {
     this.updateBoards(boards);
   }
 
-  // ── Modal ──
   openModal(type: ModalType, extra?: Partial<ModalState>): void {
     this._modal$.next({ type, ...extra });
   }

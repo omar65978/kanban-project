@@ -14,7 +14,6 @@ $medium-grey: #828FA3;
   z-index: 30;
 }
 
-// Desktop board name (left)
 .board-name-desktop {
   flex: 1;
   font-size: 24px;
@@ -25,7 +24,6 @@ $medium-grey: #828FA3;
   @media (max-width: 768px) { display: none; }
 }
 
-// Mobile logo area
 .mobile-logo {
   display: none;
   align-items: center;
@@ -50,7 +48,6 @@ $medium-grey: #828FA3;
   color: var(--color-text-1);
 }
 
-// Actions
 .header-actions {
   display: flex;
   align-items: center;

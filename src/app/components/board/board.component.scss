@@ -51,7 +51,6 @@ h4 {
   color: $medium-grey;
 }
 
-// ── Task list ──
 .task-list {
   display: flex;
   flex-direction: column;
@@ -61,7 +60,6 @@ h4 {
   flex: 1;
   padding-bottom: 8px;
 
-  // Needed for CDK DragDrop to work even when empty
   min-height: 4px;
 }
 
@@ -71,7 +69,6 @@ h4 {
   border-radius: 8px;
 }
 
-// ── Add column button ──
 .add-column {
   width: 280px;
   min-width: 280px;
@@ -96,7 +93,6 @@ h4 {
   }
 }
 
-// ── Empty board ──
 .empty-board {
   flex: 1;
   display: flex;

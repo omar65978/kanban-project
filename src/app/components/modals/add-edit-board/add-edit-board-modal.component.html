@@ -2,7 +2,6 @@
   <div class="modal-box">
     <h2 class="modal-title">{{ mode === 'add' ? 'Add New Board' : 'Edit Board' }}</h2>
 
-    <!-- Name -->
     <div class="form-group mb-24">
       <label for="board-name">Board Name</label>
       <div class="input-wrapper">
@@ -19,7 +18,6 @@
       </div>
     </div>
 
-    <!-- Columns -->
     <div class="form-group mb-24">
       <label>Board Columns</label>
       <div class="cols-list">
@@ -47,7 +45,6 @@
       </button>
     </div>
 
-    <!-- Save -->
     <button type="button" class="btn btn-primary btn-lg" (click)="save()">
       {{ mode === 'add' ? 'Create New Board' : 'Save Changes' }}
     </button>

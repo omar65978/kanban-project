@@ -1,5 +1,4 @@
 <header class="app-header">
-  <!-- Mobile logo -->
   <div class="mobile-logo" (click)="toggleSidebar.emit()">
     <img src="assets/logo-mobile.svg" alt="Kanban">
     @if (activeBoard$ | async; as board) {
@@ -8,15 +7,12 @@
     }
   </div>
 
-  <!-- Desktop board name -->
   @if (activeBoard$ | async; as board) {
     <h1 class="board-name-desktop">{{ board.name }}</h1>
   }
 
-  <!-- Actions -->
   <div class="header-actions">
     @if (activeBoard$ | async; as board) {
-      <!-- Add Task -->
       <button
         class="btn btn-primary btn-lg add-task-btn"
         (click)="addTask()"
@@ -25,7 +21,6 @@
         <span class="add-label">+ Add New Task</span>
       </button>
 
-      <!-- Board menu -->
       <div class="menu-wrap">
         <button class="menu-trigger" (click)="toggleMenu()" title="Board options">
           <img src="assets/icon-vertical-ellipsis.svg" alt="Options">

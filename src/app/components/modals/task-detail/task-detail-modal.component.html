@@ -1,7 +1,6 @@
 <div class="modal-overlay">
   @if (task) {
     <div class="modal-box">
-      <!-- Title + menu -->
       <div class="task-header">
         <h2>{{ task.title }}</h2>
         <div class="menu-wrap">
@@ -18,12 +17,10 @@
         </div>
       </div>
 
-      <!-- Description -->
       @if (task.description) {
         <p class="task-description">{{ task.description }}</p>
       }
 
-      <!-- Subtasks -->
       @if (task.subtasks.length > 0) {
         <div class="subtasks-section">
           <h4>Subtasks ({{ completedCount }} of {{ task.subtasks.length }})</h4>
@@ -43,7 +40,6 @@
         </div>
       }
 
-      <!-- Status -->
       <div class="status-section">
         <div class="form-group">
           <label>Current Status</label>

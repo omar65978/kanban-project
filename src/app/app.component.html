@@ -1,22 +1,17 @@
 <div class="app-shell">
-  <!-- Sidebar -->
   <app-sidebar
     [visible]="sidebarVisible"
     (toggleSidebar)="toggleSidebar()">
   </app-sidebar>
 
-  <!-- Main content -->
   <div class="main-content" [class.sidebar-hidden]="!sidebarVisible">
-    <!-- Header -->
     <app-header
       [sidebarVisible]="sidebarVisible"
       (toggleSidebar)="toggleSidebar()">
     </app-header>
 
-    <!-- Board -->
     <app-board></app-board>
 
-    <!-- Show sidebar button (when hidden) -->
     @if (!sidebarVisible) {
       <button class="show-sidebar-btn" (click)="toggleSidebar()" title="Show Sidebar">
         <img src="assets/icon-show-sidebar.svg" alt="Show Sidebar">
@@ -25,7 +20,6 @@
   </div>
 </div>
 
-<!-- Modals -->
 @if (modal$ | async; as modal) {
   @switch (modal.type) {
     @case ('view-task') {

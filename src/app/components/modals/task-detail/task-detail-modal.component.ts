@@ -40,7 +40,6 @@ export class TaskDetailModalComponent implements OnInit {
   toggleSubtask(idx: number): void {
     if (!this.board || !this.task) return;
     this.kanban.toggleSubtask(this.board.id, this.task.id, idx);
-    // Refresh local task reference
     this.task = this.kanban.getTaskById(this.board.id, this.task.id);
   }
 

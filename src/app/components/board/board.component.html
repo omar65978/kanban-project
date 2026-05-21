@@ -1,6 +1,5 @@
 @if (activeBoard$ | async; as board) {
   @if (board.columns.length === 0) {
-    <!-- Empty board state -->
     <div class="empty-board">
       <p>This board is empty. Create a new column to get started.</p>
       <button class="btn btn-primary btn-lg" style="width:auto; padding: 15px 32px;" (click)="openAddColumn()">
@@ -8,17 +7,14 @@
       </button>
     </div>
   } @else {
-    <!-- Scrollable column area -->
     <div class="board-scroll">
       @for (col of board.columns; track col.id) {
         <div class="column">
-          <!-- Column header -->
           <div class="col-header">
             <span class="col-dot" [style.background]="col.color"></span>
             <h4>{{ col.name }} ({{ col.tasks.length }})</h4>
           </div>
 
-          <!-- Tasks drop list -->
           <div
             class="task-list"
             cdkDropList
@@ -43,7 +39,6 @@
         </div>
       }
 
-      <!-- Add new column button -->
       <div class="add-column" (click)="openAddColumn()">
         <span>+ New Column</span>
       </div>

@@ -28,7 +28,6 @@ $medium-grey:  #828FA3;
   min-width: 300px;
 }
 
-// ── Logo ──
 .logo {
   padding: 32px 26px 54px;
   flex-shrink: 0;
@@ -37,7 +36,6 @@ $medium-grey:  #828FA3;
   .logo-mobile { display: none; height: 25px; }
 }
 
-// ── Nav ──
 .boards-nav {
   flex: 1;
   overflow-y: auto;
@@ -99,13 +97,11 @@ $medium-grey:  #828FA3;
   }
 }
 
-// ── Footer ──
 .sidebar-footer {
   padding: 16px 24px 32px;
   flex-shrink: 0;
 }
 
-// ── Theme toggle ──
 .theme-toggle {
   display: flex;
   align-items: center;
@@ -147,7 +143,6 @@ $medium-grey:  #828FA3;
   .dark & { transform: translateX(20px); }
 }
 
-// ── Hide sidebar ──
 .hide-sidebar-btn {
   display: flex;
   align-items: center;
@@ -172,7 +167,6 @@ $medium-grey:  #828FA3;
   }
 }
 
-// ── Mobile ──
 @media (max-width: 768px) {
   .sidebar {
     position: fixed;
